@@ -27,18 +27,7 @@ class ToDoListViewController: UITableViewController {
         
         print(dataFilePath)
         
-        let newItem = Item()
-        newItem.title = "Fiiind Mike"
-        itemArray.append(newItem)
-        
-        let newItem2 = Item()
-        newItem2.title = "Buy Eggos"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Buy milk"
-        itemArray.append(newItem3)
-        
+        loadItems()
         
         //pull out an array of items
         //        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
@@ -95,7 +84,7 @@ class ToDoListViewController: UITableViewController {
         //        } else {
         //            itemArray[indexPath.row].done = false
         //        }
-       saveItems()
+        saveItems()
         //tableView.reloadData()
         
         //        if  tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
@@ -153,5 +142,15 @@ class ToDoListViewController: UITableViewController {
             print("Error encoding item array, \(error)")
         }
         tableView.reloadData()
+    }
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+        }
     }
 }
