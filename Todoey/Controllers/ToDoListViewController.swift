@@ -46,17 +46,28 @@ class ToDoListViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("cellForRowAtIndexPathCalled")
+      //  print("cellForRowAtIndexPathCalled")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row].title
+        let item = itemArray[indexPath.row]
         
-       if itemArray[indexPath.row].done == true {
-           cell.accessoryType = .checkmark
-       } else {
-           cell.accessoryType = .none
-       }
+        cell.textLabel?.text = item.title
+        
+        //refactoring code by using ternary operator
+        // value = condition ? valueTrue : valueFalse
+        //cell.accessoryType = item.done == true ? .checkmark : .none
+        cell.accessoryType = item.done ? .checkmark : .none
+
+        
+        
+//        if item.done == true {
+//           cell.accessoryType = .checkmark
+//       } else {
+//           cell.accessoryType = .none
+//       }
+        
+        
         
         
         return cell
@@ -67,11 +78,15 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(itemArray[indexPath.row])
         
-        if itemArray[indexPath.row].done == false {
-            itemArray[indexPath.row].done = true
-        } else {
-            itemArray[indexPath.row].done = false
-        }
+        //elegant
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+        //not elegant, instead check code above
+//        if itemArray[indexPath.row].done == false {
+//            itemArray[indexPath.row].done = true
+//        } else {
+//            itemArray[indexPath.row].done = false
+//        }
         
         tableView.reloadData()
         
