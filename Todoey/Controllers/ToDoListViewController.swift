@@ -12,6 +12,7 @@ class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
+    //create a plist
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     // let defaults  = UserDefaults.standard
