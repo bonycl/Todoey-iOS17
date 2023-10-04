@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAx-se-R5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.2824427480916" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="2269" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Fh-fm-Cf2">
@@ -68,12 +68,46 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="NZW-BN-0pX" kind="relationship" relationship="rootViewController" id="N42-Ir-bCI"/>
+                        <segue destination="WjG-LU-EC9" kind="relationship" relationship="rootViewController" id="bBT-Rn-FQP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGu-2p-qBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846.56488549618314" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="677" y="-2"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="xPk-Kv-MaZ">
+            <objects>
+                <tableViewController id="WjG-LU-EC9" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="CAz-ed-MX5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="ICx-di-xZZ">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ICx-di-xZZ" id="MPA-4e-RxX">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WjG-LU-EC9" id="zmF-T5-b5N"/>
+                            <outlet property="delegate" destination="WjG-LU-EC9" id="DLX-Mz-RnZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JXL-rd-1Be">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="LgE-Tq-NBE"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="NZW-BN-0pX" kind="show" identifier="goToItems" id="tPS-03-3mx"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYP-2r-uHO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469" y="-2"/>
         </scene>
     </scenes>
     <resources>
