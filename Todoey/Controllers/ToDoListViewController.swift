@@ -14,7 +14,7 @@ class ToDoListViewController: UITableViewController {
     var itemArray = [Item]()
     
     //create a plist
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    // let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     // let defaults  = UserDefaults.standard
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -22,14 +22,15 @@ class ToDoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         //save any data to your phone
         //.defaults is a single-tone for urls
         //create a .plist
         //        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
         
-        print(dataFilePath ?? "fckp")
+        // print(dataFilePath ?? "fckp")
         
-       // loadItems()
+         loadItems()
         
         //pull out an array of items
         //        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
@@ -147,15 +148,14 @@ class ToDoListViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-//    func loadItems(){
-//        if let data = try? Data(contentsOf: dataFilePath!) {
-//            let decoder = PropertyListDecoder()
-//            do {
-//                itemArray = try decoder.decode([Item].self, from: data)
-//            } catch {
-//                print("Error decoding item array, \(error)")
-//            }
-//        }
-//    }
+        func loadItems() {
+            let request: NSFetchRequest<Item> = Item.fetchRequest()
+            do { 
+                itemArray = try context.fetch(request)
+            } catch {
+                print("Error fetching data from \(error)")
+            
+            }
+        }
     
 }
