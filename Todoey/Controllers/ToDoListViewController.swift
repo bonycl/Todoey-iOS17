@@ -23,6 +23,9 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+       //searchBar.delegate = self
+        
         //save any data to your phone
         //.defaults is a single-tone for urls
         //create a .plist
@@ -78,6 +81,9 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(itemArray[indexPath.row])
         
+        
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
         //elegant
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
@@ -148,14 +154,33 @@ class ToDoListViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-        func loadItems() {
-            let request: NSFetchRequest<Item> = Item.fetchRequest()
-            do { 
+                                                        //default value
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+        
+        //    let request: NSFetchRequest<Item> = Item.fetchRequest()
+            do {
                 itemArray = try context.fetch(request)
             } catch {
                 print("Error fetching data from \(error)")
             
             }
+        tableView.reloadData()
         }
+   
+}
+//MARK: - Search bar methods
+
+extension ToDoListViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+       // print(searchBar.text!)
+    
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+                loadItems(with: request)
+        
+    }
 }
