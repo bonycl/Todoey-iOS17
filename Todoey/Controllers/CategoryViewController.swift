@@ -58,6 +58,10 @@ class CategoryViewController: UITableViewController {
             self.saveCategories()
             
         }
+        let cancelAction = UIAlertAction(title: "cancel", style: .destructive) { action in
+            print("cancel pressed")
+        }
+        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "whatever buddy"
             textField = alertTextField
@@ -65,6 +69,7 @@ class CategoryViewController: UITableViewController {
             
         }
         alert.addAction(action)
+        alert.addAction(cancelAction)
         
         //present alert
         present(alert, animated: true, completion: nil)

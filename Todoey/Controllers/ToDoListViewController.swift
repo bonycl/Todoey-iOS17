@@ -118,7 +118,9 @@ class ToDoListViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add Item", style: .default) { action in
+        
+        
+        let action = UIAlertAction(title: "add Item", style: .default) { action in
             //what will happens once the user clicks to Add Item button on our UIAlert
             // print(textField.text)
             
@@ -134,6 +136,11 @@ class ToDoListViewController: UITableViewController {
             self.saveItems()
             
         }
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .destructive) { action in
+            print("cancel pressed")
+        }
+        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create a new item"
             textField = alertTextField
@@ -141,7 +148,8 @@ class ToDoListViewController: UITableViewController {
             
         }
         alert.addAction(action)
-        
+        alert.addAction(cancelAction)
+       
         //present alert
         present(alert, animated: true, completion: nil)
         
