@@ -7,9 +7,11 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
+    
+    let realm = try! Realm()
     
     var categories = [Category]()
     
@@ -19,7 +21,7 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        //  print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         loadCategories()
         
     }
@@ -48,14 +50,15 @@ class CategoryViewController: UITableViewController {
         let alert = UIAlertController(title: "add a new category...", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "add", style: .default) { action in
             
-            let newCategory = Category(context: self.context)
+            let newCategory = Category()
             newCategory.name = textField.text!
             
             self.categories.append(newCategory)
             self.tableView.reloadData()
+            
             print(self.categories)
             
-            self.saveCategories()
+            self.save(category: newCategory)
             
         }
         let cancelAction = UIAlertAction(title: "cancel", style: .destructive) { action in
@@ -90,32 +93,29 @@ class CategoryViewController: UITableViewController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
     //MARK: - Data Manipulation Methods
     
-    func saveCategories() {
+    func save(category: Category) {
         do {
-            try context.save()
+            try realm.write {
+                realm.add(category)
+            }
         } catch {
             print("Error saving context \(error)")
         }
         tableView.reloadData()
     }
-    func loadCategories(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+    func loadCategories() {
         
-        do {
-            categories = try context.fetch(request)
-        } catch {
-            print("Error fetching data from \(error)")
-        }
-        
-        tableView.reloadData()
+//        let request: NSFetchRequest<Category> = Category.fetchRequest()
+//
+//        do {
+//            categories = try context.fetch(request)
+//        } catch {
+//            print("Error fetching data from \(error)")
+//        }
+//
+//        tableView.reloadData()
     }
     
     
