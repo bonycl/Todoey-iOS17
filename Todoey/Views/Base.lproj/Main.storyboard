@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todoey-->
+        <!--Items-->
         <scene sceneID="ov4-lE-txv">
             <objects>
                 <tableViewController id="NZW-BN-0pX" customClass="ToDoListViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,9 +39,9 @@
                             <outlet property="delegate" destination="NZW-BN-0pX" id="GUc-Zz-uku"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="aQ6-em-ezo">
+                    <navigationItem key="navigationItem" title="Items" id="aQ6-em-ezo">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BPj-7w-Wgp">
-                            <color key="tintColor" systemColor="systemIndigoColor"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="NZW-BN-0pX" id="3lM-4l-k3y"/>
                             </connections>
@@ -60,11 +60,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ajh-aR-SHK">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemTealColor"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="labelColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
-                        <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="677" y="-2"/>
         </scene>
-        <!--Category View Controller-->
+        <!--Todoey-->
         <scene sceneID="xPk-Kv-MaZ">
             <objects>
                 <tableViewController id="WjG-LU-EC9" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,8 +98,13 @@
                             <outlet property="delegate" destination="WjG-LU-EC9" id="DLX-Mz-RnZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JXL-rd-1Be">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="LgE-Tq-NBE"/>
+                    <navigationItem key="navigationItem" title="Todoey" id="JXL-rd-1Be">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LgE-Tq-NBE">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="WjG-LU-EC9" id="jcv-V1-SHY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="NZW-BN-0pX" kind="show" identifier="goToItems" id="tPS-03-3mx"/>
@@ -111,17 +116,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
