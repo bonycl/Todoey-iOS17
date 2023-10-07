@@ -68,18 +68,19 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //        todoItems?[indexPath.row].done = !todoItems[indexPath.row].done
-        //
-        //        saveItems()
-        //tableView.reloadData()
-        
-        //        if  tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-        //            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        //
-        //        } else {
-        //            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        //        }
-        
+        //edit notes using realm
+        //working with a selected cell
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                    print("Error saving done status, \(error)")
+                }
+        }
+        tableView.reloadData()
+
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -90,8 +91,6 @@ class ToDoListViewController: UITableViewController {
         var textField = UITextField()
         
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
-        
-        
         
         let action = UIAlertAction(title: "add Item", style: .default) { action in
             //what will happens once the user clicks to Add Item button on our UIAlert
