@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-
+//realm object
 class Category: Object {
    @objc dynamic var name: String = ""
     

@@ -12,7 +12,7 @@ import RealmSwift
 class CategoryViewController: UITableViewController {
     
     let realm = try! Realm()
-    
+    // signed to collection class as Result with category objects
     var categories: Results<Category>?
     
     //grab a reference
@@ -58,8 +58,7 @@ class CategoryViewController: UITableViewController {
             
             self.tableView.reloadData()
             
-            //print(self.categories)
-            
+            //save to realm
             self.save(category: newCategory)
             
         }
@@ -99,6 +98,7 @@ class CategoryViewController: UITableViewController {
     
     func save(category: Category) {
         do {
+            //commit changes to realm
             try realm.write {
                 realm.add(category)
             }
