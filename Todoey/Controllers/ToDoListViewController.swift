@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-
+import ChameleonFramework
 
 class ToDoListViewController: SwipeViewController {
     
@@ -20,6 +20,7 @@ class ToDoListViewController: SwipeViewController {
             loadItems()
         }
     }
+   
     
     //create a plist
     // let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
@@ -32,7 +33,8 @@ class ToDoListViewController: SwipeViewController {
         
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
        
-        loadItems()
+        //loadItems()
+        tableView.separatorStyle = .none
         
     }
     //MARK: - creating a TableView  Datasource Methods
@@ -46,7 +48,19 @@ class ToDoListViewController: SwipeViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
+            
             cell.textLabel?.text = item.title
+            
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+                
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+                
+            }
+//            print("version 1: \(CGFloat(indexPath.row / todoItems!.count))")
+//          
+//            print("version 2: \(CGFloat(indexPath.row) / CGFloat(todoItems!.count)))")
+            
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No items added"
