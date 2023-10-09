@@ -8,11 +8,12 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
-class ToDoListViewController: UITableViewController {
+class ToDoListViewController: SwipeViewController {
     
-    var todoItems: Results<Item>?
     let realm = try! Realm()
+    var todoItems: Results<Item>?
     
     var selectedCategory: Category? {
         didSet{
@@ -29,18 +30,9 @@ class ToDoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        //searchBar.delegate = self
-        
-        
-        
-        //pull out an array of items
-        //        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
-        //            itemArray = items
-        //
-        //        }
-        
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        tableView.rowHeight = 80.0
+        loadItems()
         
     }
     //MARK: - creating a TableView  Datasource Methods
@@ -50,12 +42,12 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //  print("cellForRowAtIndexPathCalled")
+    
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
-            
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No items added"
@@ -133,7 +125,22 @@ class ToDoListViewController: UITableViewController {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
+    
+    override func updateModel(at indexPath: IndexPath) {
+       // super.updateModel(at: indexPath)
+        
+        if let itemForDeletion = self.todoItems?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting Item, \(error)")
+            }
+        }
+    }
 }
+
 //MARK: - Search bar methods
 
 extension ToDoListViewController: UISearchBarDelegate {
@@ -153,7 +160,7 @@ extension ToDoListViewController: UISearchBarDelegate {
                 //finish edit, go to original condition
                 searchBar.resignFirstResponder()
             }
-
         }
     }
+    
 }
