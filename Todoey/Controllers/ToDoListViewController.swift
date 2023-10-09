@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import SwipeCellKit
+
 
 class ToDoListViewController: SwipeViewController {
     
@@ -31,7 +31,7 @@ class ToDoListViewController: SwipeViewController {
         super.viewDidLoad()
         
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        tableView.rowHeight = 80.0
+       
         loadItems()
         
     }
@@ -42,7 +42,6 @@ class ToDoListViewController: SwipeViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //  print("cellForRowAtIndexPathCalled")
-    
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
@@ -60,20 +59,19 @@ class ToDoListViewController: SwipeViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         //working with a selected cell
         if let item = todoItems?[indexPath.row] {
             //updating data via realm
             do {
                 try realm.write {
-                     item.done = !item.done
+                    item.done = !item.done
                 }
             } catch {
-                    print("Error saving done status, \(error)")
-                }
+                print("Error saving done status, \(error)")
+            }
         }
         tableView.reloadData()
-
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -111,7 +109,7 @@ class ToDoListViewController: SwipeViewController {
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create a new item"
             textField = alertTextField
-        
+            
         }
         alert.addAction(action)
         alert.addAction(cancelAction)
@@ -119,7 +117,7 @@ class ToDoListViewController: SwipeViewController {
         present(alert, animated: true, completion: nil)
         
     }
-
+    
     func loadItems() {
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
@@ -127,7 +125,7 @@ class ToDoListViewController: SwipeViewController {
     }
     
     override func updateModel(at indexPath: IndexPath) {
-       // super.updateModel(at: indexPath)
+        // super.updateModel(at: indexPath)
         
         if let itemForDeletion = self.todoItems?[indexPath.row] {
             do {
@@ -144,7 +142,7 @@ class ToDoListViewController: SwipeViewController {
 //MARK: - Search bar methods
 
 extension ToDoListViewController: UISearchBarDelegate {
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //update todoItems is equal filtered todoItems by predicate
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
@@ -155,7 +153,7 @@ extension ToDoListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadItems()
-
+            
             DispatchQueue.main.async {
                 //finish edit, go to original condition
                 searchBar.resignFirstResponder()
