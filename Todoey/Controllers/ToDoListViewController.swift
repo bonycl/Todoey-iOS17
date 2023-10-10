@@ -56,6 +56,7 @@ class ToDoListViewController: SwipeViewController {
                 searchBar.barTintColor = navBarColor
                 searchBar.searchTextField.backgroundColor = .white
                 searchBar.searchTextField.textColor = .black
+                
             }
         }
     }

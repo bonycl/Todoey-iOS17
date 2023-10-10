@@ -24,7 +24,7 @@ class CategoryViewController: SwipeViewController {
         
         
         loadCategories()
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         
     }
     
@@ -32,7 +32,7 @@ class CategoryViewController: SwipeViewController {
         guard let navBar = navigationController?.navigationBar else {
             fatalError("Navigation controller does not exist.")
         }
-        navBar.backgroundColor = UIColor(hexString: "0096FF")
+        navBar.backgroundColor = UIColor.flatPowderBlue()
         
     }
     
@@ -71,7 +71,11 @@ class CategoryViewController: SwipeViewController {
             
             let newCategory = Category()
             newCategory.name = textField.text!
-            newCategory.color = UIColor.randomFlat().hexValue()
+            
+            //newCategory.color = UIColor.randomFlat().hexValue()
+            newCategory.color = UIColor.flatPowderBlue().hexValue()
+           // newCategory.color = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: .infinite, andColors: [UIColor.flatPowderBlue()]).hexValue()
+           // colorwith adientStyle: linearLeftToRight
             self.tableView.reloadData()
             
             //save to realm
@@ -99,6 +103,7 @@ class CategoryViewController: SwipeViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "goToItems", sender: self)
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ToDoListViewController
