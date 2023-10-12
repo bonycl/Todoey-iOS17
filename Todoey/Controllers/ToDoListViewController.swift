@@ -75,12 +75,13 @@ class ToDoListViewController: SwipeViewController {
                 
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
-                
+               // cell.accessoryType. = ContrastColorOf(color, returnFlat: true)
+
             }
 //            print("version 1: \(CGFloat(indexPath.row / todoItems!.count))")
 //          
 //            print("version 2: \(CGFloat(indexPath.row) / CGFloat(todoItems!.count)))")
-            
+           
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No items added"

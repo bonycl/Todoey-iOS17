@@ -32,8 +32,9 @@ class CategoryViewController: SwipeViewController {
         guard let navBar = navigationController?.navigationBar else {
             fatalError("Navigation controller does not exist.")
         }
+        
         navBar.backgroundColor = UIColor.flatPowderBlue()
-        //navBar.tintColor = ContrastColorOf(, returnFlat: true)
+        
         navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(UIColor.flatPowderBlue(), returnFlat: true)]
         navBar.topItem?.rightBarButtonItem?.tintColor =  ContrastColorOf(UIColor.flatPowderBlue(), returnFlat: true)
         
@@ -75,8 +76,10 @@ class CategoryViewController: SwipeViewController {
             let newCategory = Category()
             newCategory.name = textField.text!
             
-            //newCategory.color = UIColor.randomFlat().hexValue()
-            newCategory.color = UIColor.flatPowderBlue().hexValue()
+           // newCategory.color = UIColor(complementaryFlatColorOf: FlatPowderBlue()).hexValue()
+
+            newCategory.color = UIColor.randomFlat().hexValue()
+            //newCategory.color = UIColor.flatPowderBlue().hexValue()
            // newCategory.color = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: .infinite, andColors: [UIColor.flatPowderBlue()]).hexValue()
            
             self.tableView.reloadData()

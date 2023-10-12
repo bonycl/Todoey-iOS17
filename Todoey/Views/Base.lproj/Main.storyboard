@@ -63,7 +63,6 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.55686277149999996" green="0.1607843041" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -83,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1589" y="-2"/>
         </scene>
-        <!--Todoey-->
+        <!--Categories-->
         <scene sceneID="xPk-Kv-MaZ">
             <objects>
                 <tableViewController id="WjG-LU-EC9" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +105,7 @@
                             <outlet property="delegate" destination="WjG-LU-EC9" id="DLX-Mz-RnZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="JXL-rd-1Be">
+                    <navigationItem key="navigationItem" title="Categories" id="JXL-rd-1Be">
                         <barButtonItem key="backBarButtonItem" title=" " id="fVZ-W1-vQq"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LgE-Tq-NBE">
                             <connections>
