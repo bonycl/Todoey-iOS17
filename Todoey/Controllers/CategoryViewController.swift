@@ -33,6 +33,9 @@ class CategoryViewController: SwipeViewController {
             fatalError("Navigation controller does not exist.")
         }
         navBar.backgroundColor = UIColor.flatPowderBlue()
+        //navBar.tintColor = ContrastColorOf(, returnFlat: true)
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(UIColor.flatPowderBlue(), returnFlat: true)]
+        navBar.topItem?.rightBarButtonItem?.tintColor =  ContrastColorOf(UIColor.flatPowderBlue(), returnFlat: true)
         
     }
     
@@ -75,7 +78,7 @@ class CategoryViewController: SwipeViewController {
             //newCategory.color = UIColor.randomFlat().hexValue()
             newCategory.color = UIColor.flatPowderBlue().hexValue()
            // newCategory.color = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: .infinite, andColors: [UIColor.flatPowderBlue()]).hexValue()
-           // colorwith adientStyle: linearLeftToRight
+           
             self.tableView.reloadData()
             
             //save to realm
@@ -103,6 +106,8 @@ class CategoryViewController: SwipeViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "goToItems", sender: self)
+        
+        tableView.reloadData()
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

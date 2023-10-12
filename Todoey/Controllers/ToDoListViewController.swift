@@ -23,13 +23,6 @@ class ToDoListViewController: SwipeViewController {
         }
     }
    
-    
-    //create a plist
-    // let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
-    // let defaults  = UserDefaults.standard
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +42,7 @@ class ToDoListViewController: SwipeViewController {
             
             if let navBarColor = UIColor(hexString: colorHex) {
                 
+            
                 navBar.backgroundColor = navBarColor
                 navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
                 navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
@@ -56,6 +50,8 @@ class ToDoListViewController: SwipeViewController {
                 searchBar.barTintColor = navBarColor
                 searchBar.searchTextField.backgroundColor = .white
                 searchBar.searchTextField.textColor = .black
+                
+                navBar.isTranslucent = true
                 
             }
         }

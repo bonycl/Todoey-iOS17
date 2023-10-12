@@ -52,7 +52,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAx-se-R5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2269" y="-2"/>
+            <point key="canvasLocation" x="3194.6564885496182" y="-2.1126760563380285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Fh-fm-Cf2">
@@ -63,6 +63,7 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.55686277149999996" green="0.1607843041" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -71,13 +72,16 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OB5-M3-jma">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="WjG-LU-EC9" kind="relationship" relationship="rootViewController" id="bBT-Rn-FQP"/>
+                        <segue destination="WjG-LU-EC9" kind="relationship" relationship="rootViewController" id="8Mo-cK-p2e"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGu-2p-qBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="-2"/>
+            <point key="canvasLocation" x="1589" y="-2"/>
         </scene>
         <!--Todoey-->
         <scene sceneID="xPk-Kv-MaZ">
@@ -103,8 +107,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todoey" id="JXL-rd-1Be">
+                        <barButtonItem key="backBarButtonItem" title=" " id="fVZ-W1-vQq"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LgE-Tq-NBE">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="WjG-LU-EC9" id="jcv-V1-SHY"/>
                             </connections>
@@ -116,7 +120,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYP-2r-uHO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469" y="-2"/>
+            <point key="canvasLocation" x="2394.6564885496182" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
