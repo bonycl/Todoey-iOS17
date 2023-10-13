@@ -53,6 +53,8 @@ class ToDoListViewController: SwipeViewController {
                 
                 navBar.isTranslucent = true
                 
+                searchBar.placeholder = "type here for search"
+                
             }
         }
     }
