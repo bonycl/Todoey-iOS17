@@ -118,7 +118,7 @@ class ToDoListViewController: SwipeViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add a new Todoey Item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "add Item", style: .default) { action in
             //what will happens once the user clicks to Add Item button on our UIAlert
